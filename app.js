@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const cors = require('cors');
@@ -8,7 +7,8 @@ require('dotenv/config');
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 const postsRoute = require('./routes/posts');
 app.use('/posts', postsRoute);
